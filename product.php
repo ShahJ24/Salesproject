@@ -18,6 +18,13 @@
   background-color: #383e56;
   overflow: hidden;
 }
+	
+img{
+	
+	max-height: 150px;
+	max-width: 150px;
+		
+}
 
 /* Style the links inside the navigation bar */
 .topnav a {
@@ -51,6 +58,8 @@
 	  <a href="#news">Checkout</a>
 	  <a href="#about">About</a>
 	</div>
+	
+	
 </body>
 </html>
 
@@ -58,7 +67,25 @@
 
 <?php
 
+	require('mysqli_connect.php');
 
-//This section will display the products with images and information that are inserted and can choose it for the check out
+	
+	$sqlimage = "SELECT * FROM product";
+	$result = mysqli_query($dbnw,$sqlimage);
+
+	if(!$result){
+		echo "Error: ". mysqli_error($dbnw);
+	}
+
+	
+	while($rows = mysqli_fetch_array($result))
+	{       
+		echo "<p><strong> ProductName: </strong> <a href = 'details.php?id={$rows['product_id']}'>{$rows['product_name']} </a></p>";
+		echo "<p><strong> Product Category: </strong> {$rows['product_category']}</p>";
+		echo "<p><strong> Product Quantity: </strong> {$rows['product_qty']} </p>";
+		//echo "<strong>Image: </strong> <img src='images/".$rows['image']."' alt = 'ImageNotLoaded'>";
+		echo '<img src="data:image/jpeg;base64,'.base64_encode( $rows['image'] ).'" alt = "ImageNotLoaded"/>';
+		
+	}
 
 ?>
