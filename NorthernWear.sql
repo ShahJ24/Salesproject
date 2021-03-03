@@ -23,12 +23,27 @@ CREATE TABLE customer (
   phone varchar(30) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
-
+ALTER TABLE customer
+  ADD COLUMN fname varchar(100) NOT NULL;
+  
+ALTER TABLE customer
+  ADD COLUMN lname varchar(100) NOT NULL;
+  
+ALTER TABLE customer
+  DROP COLUMN customer_name;
+  
+ALTER TABLE customer
+  DROP COLUMN country;
+  
+ALTER TABLE customer
+  ADD COLUMN state varchar(100) NOT NULL;
+  
 CREATE TABLE product (
   product_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   product_name varchar(100) NOT NULL,
   product_category varchar(100) NOT NULL,
   product_qty int(11) NOT NULL,
+  product_price int(11) NOT NULL,
   image blob,
   cust_products int(11) NOT NULL,
   FOREIGN KEY (cust_products) REFERENCES customer(customer_id)
@@ -49,3 +64,11 @@ select * from orders;
 select * from Product;
 select * from customer;
 select * from login;
+
+ALTER TABLE orders
+  DROP COLUMN order_date;
+  
+ALTER TABLE orders
+  ADD COLUMN ordered_name varchar(30) NOT NULL;  
+  
+select * from orders;
