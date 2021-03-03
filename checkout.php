@@ -199,6 +199,13 @@
 		
 		if (empty($errors) && !empty($card)){
 			
+			$q = "INSERT INTO northernwear.customer(fname, lname, phone, street_address, city, state, postal_code)
+					VALUES('$fn','$ln','$ph','$sa','$cty','$st','$pc')" ;
+			
+			$result = mysqli_query($dbnw,$q) or die(mysqli_error($dbnw));
+			
+			$customer_id = mysqli_insert_id($dbnw);
+			
 			echo '<h1>Success!</h1>';
 	
 			echo $fn."</br>";
@@ -218,10 +225,8 @@
 		else {
 			
 		
-			foreach ($errors as $msg) { 
-				
-				echo '<h5>Error!</h5>'.$msg;
-				
+			foreach ($errors as $msg) { 	
+				echo '<h5>Error!</h5>'.$msg;		
 			}
 			echo '</p><p>Please try again.</p><p><br></p>';
 		}

@@ -14,6 +14,7 @@
 	}
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,6 +118,37 @@ img{
 				$$key = $value;
 
 				while ($rows = $result->fetch_assoc()) {
+					
+					
+	
+						echo '<div class="tm-container-inner tm-persons">';
+						echo '<div class="row">';
+						echo '<article class="col-lg-6">';
+						echo '<figure class="tm-person">';
+						echo '<img src="data:image/jpeg;base64,'.base64_encode( $rows['image'] ).'" 						alt="ImageNotLoaded"/>';
+						echo '<figcaption class="tm-person-description">';
+						echo '<h4 class="tm-person-name">'.{$rows['product_id']}.'</h4>';
+						echo '<h4 class="tm-person-name">'.$rows['product_category'].'</h4>';
+						echo '<h4 class="tm-person-name">'.$rows['product_price'].'</h4>';
+						echo '<form action="" method="post">
+								<label for="value">Quantity</label>
+								<select name="quantity" id="quantity" onchange="this.form.submit()">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+								</select>
+								</form>';
+						echo "</figcaption>";
+						echo "</figure>";
+						echo "</article>";
+						echo "</div>";
+						echo "</div>";
+						
+						
+						
+					
+					
 
 						echo '<div class="card"><img src="data:image/jpeg;base64,'.base64_encode( $rows['image'] ).'" alt="ImageNotLoaded"/>';
 
