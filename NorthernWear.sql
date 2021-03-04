@@ -59,6 +59,14 @@ CREATE TABLE orders (
   FOREIGN KEY (prod_orders) REFERENCES product(product_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+ALTER TABLE orders
+  ADD COLUMN card_holder_name varchar(100) NOT NULL;
+  
+ALTER TABLE orders
+  DROP COLUMN order_name;
+  
+ALTER TABLE orders
+  ADD COLUMN card_number varchar(100) NOT NULL;
 
 select * from orders;
 select * from Product;
