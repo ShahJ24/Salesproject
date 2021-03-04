@@ -171,7 +171,7 @@
 				$get_productcategory = $_SESSION['CATEGORY']; 
 				$get_productquantity = $_SESSION['quantity'];
 				$get_productprice = $_SESSION['price'];
-			echo $get_productquantity;
+	
 				$total = $get_productprice * $get_productquantity;
 
 
@@ -380,8 +380,8 @@
 					$customer_id = mysqli_insert_id($dbnw);
 					
 					
-					$order = "INSERT INTO northernwear.orders(payment_type, card_number, card_holder_name, expiry_year, expiry_month, cvv)
-							VALUES('$pay','$cardnum','$card','$ey','$em','$cv')" ;
+					$order = "INSERT INTO northernwear.orders(payment_type, card_number, card_holder_name, expiry_year, expiry_month, cvv, product_id)
+							VALUES('$pay','$cardnum','$card','$ey','$em','$cv','$get_productid')" ;
 
 					$result_1 = mysqli_query($dbnw,$order) or die(mysqli_error($dbnw));
 
